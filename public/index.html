@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="">
+    <title>股票交易决策检查清单</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1 class="title">📈 股票交易决策助手</h1>
+            <p class="subtitle">理性分析，科学决策</p>
+        </header>
+
+        <!-- 进度条 -->
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text">
+                <span id="currentStep">1</span> / <span id="totalSteps">5</span>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <main class="main-content">
+            <!-- 欢迎页面 -->
+            <div id="welcomeCard" class="card active">
+                <div class="card-header">
+                    <h2>🎯 开始你的交易决策</h2>
+                    <p>让我们通过科学的流程来验证你的交易决策</p>
+                </div>
+                <div class="card-body">
+                    <div class="welcome-icon">🤔</div>
+                    <p class="welcome-text">准备好了吗？先输入股票名称，然后开始决策流程</p>
+                    
+                    <!-- 股票名称输入 -->
+                    <div class="stock-input-container">
+                        <label for="stockNameInput" class="stock-input-label">📈 股票名称/代码</label>
+                        <input type="text" 
+                               id="stockNameInput" 
+                               class="stock-input" 
+                               placeholder="例如：贵州茅台、000858、比亚迪等"
+                               maxlength="20">
+                    </div>
+                    
+                    <!-- 历史记录按钮 -->
+                    <div class="history-actions">
+                        <button class="btn btn-secondary btn-small" onclick="showHistory()">
+                            📋 查看历史记录
+                        </button>
+                    </div>
+                    
+                    <!-- 原始按钮（隐藏，供后续研究） -->
+                    <button class="btn btn-primary btn-large" onclick="startDecision()" style="visibility: hidden; position: absolute;">
+                        开始检查 (原始版本)
+                    </button>
+                    
+                    <!-- 修复版按钮（能正常工作的版本） -->
+                    <button class="btn btn-primary btn-large" onclick="fixedStartDecision()">
+                        开始检查 →
+                    </button>
+                </div>
+            </div>
+
+            <!-- 问题卡片容器 -->
+            <div id="questionContainer"></div>
+
+            <!-- 结果页面 -->
+            <div id="resultCard" class="card">
+                <div class="card-header">
+                    <h2 id="resultTitle">决策结果</h2>
+                </div>
+                <div class="card-body">
+                    <div id="resultIcon" class="result-icon"></div>
+                    <div id="resultMessage" class="result-message"></div>
+                    <div id="decisionSummary" class="decision-summary"></div>
+                    <div class="result-actions">
+                        <button class="btn btn-secondary" onclick="restartDecision()">
+                            🔄 重新开始
+                        </button>
+                        <button class="btn btn-primary" onclick="saveDecision()">
+                            💾 保存决策
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 历史记录页面 -->
+            <div id="historyCard" class="card">
+                <div class="card-header">
+                    <h2>📋 历史决策记录</h2>
+                    <p>查看你之前的交易决策</p>
+                </div>
+                <div class="card-body">
+                    <div id="historyList" class="history-list">
+                        <!-- 历史记录将在这里动态生成 -->
+                    </div>
+                    <div class="history-actions">
+                        <button class="btn btn-secondary" onclick="clearHistory()">
+                            🗑️ 清空历史
+                        </button>
+                        <button class="btn btn-primary" onclick="closeHistory()">
+                            ← 返回首页
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>⚠️ 投资有风险，决策需谨慎。本工具仅供参考，不构成投资建议。</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

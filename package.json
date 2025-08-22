@@ -1,0 +1,19 @@
+{
+  "name": "stock-checklist",
+  "version": "1.0.0",
+  "description": "股票交易决策检查清单网站",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": ["stock", "checklist", "trading", "decision"],
+  "author": "股票决策助手",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

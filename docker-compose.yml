@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  stock-checklist:
+    build: .
+    container_name: stock-checklist-app
+    ports:
+      - "80:3000"   # 映射到80端口，直接通过IP访问
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    labels:
+      - "com.docker.compose.project=stock-checklist"
+    networks:
+      - stock-network
+
+networks:
+  stock-network:
+    driver: bridge
